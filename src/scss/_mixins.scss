@@ -1,0 +1,5 @@
+@mixin noHover {
+    @media (hover:none), (hover:on-demand), (pointer: none), (pointer: coarse) {
+        @content;
+    }
+}

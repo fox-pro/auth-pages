@@ -1,0 +1,118 @@
+@import "../../scss/mixins";
+
+:host {
+    width: 100%;
+    min-width: 320px;
+    max-width: 320px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+app-card,
+app-logo {
+    margin-bottom: 12px;
+}
+
+.row {
+    margin: 12px 0;
+    position: relative;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    &.submit {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.field {
+    $inputHorizontalPadding: 16px;
+    $inputVerticalPadding: 16px;
+    $inputBorderSize: 1px;
+    $labelHorizontalPadding: 2px;
+
+    width: 100%;
+
+    label {
+        position: absolute;
+        left: $inputHorizontalPadding - $labelHorizontalPadding;
+        top: $inputVerticalPadding;
+        padding: 0 $labelHorizontalPadding;
+        color: var(--label-text-color);
+        transform-origin: left top;
+        transition: top cubic-bezier(0.25,0.8,0.25,1) .25s, transform cubic-bezier(0.25,0.8,0.25,1) .25s;
+    }
+
+    input {
+        box-sizing: border-box;
+        width: 100%;
+        padding: ($inputVerticalPadding + 1px) $inputHorizontalPadding ($inputVerticalPadding - 1px);
+        color: var(--text-color);
+        border: none;
+        border-radius: var(--border-radius);
+        background-color: var(--card-bg-color);
+        outline: $inputBorderSize solid var(--input-border-color);
+        outline-offset: -$inputBorderSize;
+
+        &:focus {
+            outline: ($inputBorderSize + 1px) solid var(--primary-color);
+            outline-offset: -($inputBorderSize + 1px);
+        }
+    }
+
+    &.focused,
+    &.filled {
+        label {
+            top: 0;
+            transform: scale(0.75) translateY(-50%);
+            background-color: var(--card-bg-color);
+        }
+    }
+
+    &.focused label {
+        color: var(--primary-color);
+    }
+
+    &.invalid {
+        label {
+            color: var(--danger-color);
+        }
+    }
+
+    .input-invalid {
+        margin-top: 5px;
+        padding: 0 $inputHorizontalPadding;
+        font-size: 0.8em;
+        color: var(--danger-color);
+    }
+}
+
+button {
+    padding: 11px 18px 9px;
+    border-radius: var(--border-radius);
+    background-color: var(--primary-color);
+    color: #fff;
+    border: inherit;
+    outline: inherit;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--primary-focus-color);
+    }
+
+    &:disabled {
+        cursor: default;
+        background-color: var(--disabled-color);
+    }
+
+    @include noHover {
+        &:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+    }
+}

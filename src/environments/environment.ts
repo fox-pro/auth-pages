@@ -2,8 +2,13 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment = {
-  production: false
+import { EnvironmentInterface } from "./env.config";
+import { ConsoleLogger } from "src/app/_services/logger/console-logger";
+
+export const environment: EnvironmentInterface = {
+  production: false,
+  loggerProvider: ConsoleLogger,
+  authApiBaseUrl: 'https://my-json-server.typicode.com/kidsloop-test/accounts',
 };
 
 /*
