@@ -19,6 +19,8 @@ import { ENVIRONMENT } from './../environments/env.config';
 import { SchemeSwitcherComponent } from './_components/theme-switcher/scheme-switcher.component';
 import { LogoComponent } from './_components/logo/logo.component';
 import { LanguageSwitcherComponent } from './_components/language-switcher/language-switcher.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { ForgotComponent } from './forgot/forgot.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -34,6 +36,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     SchemeSwitcherComponent,
     LogoComponent,
     LanguageSwitcherComponent,
+    SignUpComponent,
+    ForgotComponent,
   ],
   imports: [
     BrowserModule,

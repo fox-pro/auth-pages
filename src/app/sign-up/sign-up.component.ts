@@ -1,18 +1,24 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
-import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, ValidationErrors, Validators } from '@angular/forms';
 
 import { emailPhoneValidator } from '../_directives/email-phone-validator.directive';
 import { AuthService, SignInUpCredentials } from '../_services/auth.service';
 import { Logger } from '../_services/logger/logger';
 
+function checkPasswords(group: AbstractControl): ValidationErrors | null {
+  const password = group.get('password')?.value;
+  const confirm = group.get('confirm')?.value
+  return password === confirm ? null : { notSame: true }
+}
+
 @Component({
-  selector: 'app-sign-in',
-  templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.scss'],
+  selector: 'app-sign-up',
+  templateUrl: './sign-up.component.html',
+  styleUrls: ['./sign-up.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SignInComponent {
-  loginForm = this.fb.group({
+export class SignUpComponent {
+  signupForm = this.fb.group({
     email: ['', [
       Validators.required,
       emailPhoneValidator,
@@ -21,7 +27,8 @@ export class SignInComponent {
       Validators.required,
       Validators.minLength(6),
     ]],
-  });
+    confirm: [''],
+  }, { validators: checkPasswords });
 
   loading = false;
 
@@ -35,17 +42,17 @@ export class SignInComponent {
   ) { }
 
   get f(): { [key: string]: AbstractControl; } {
-    return this.loginForm.controls;
+    return this.signupForm.controls;
   }
 
   isDisabled(): boolean {
-    return (this.submitted && this.loginForm.invalid) || this.loading;
+    return (this.submitted && this.signupForm.invalid) || this.loading;
   }
 
   onSubmit() {
     this.submitted = true;
 
-    if (this.loginForm.invalid) {
+    if (this.signupForm.invalid) {
         return;
     }
 
@@ -56,12 +63,12 @@ export class SignInComponent {
 
     this.loading = true;
     this.authService
-      .signin(data)
+      .signup(data)
       .subscribe((result) => {
         if (!!result) {
-          this.logger.notice(`Welcome, ${result.name}`);
+          this.logger.notice('id', result.id);
           this.submitted = false;
-          this.loginForm.reset();
+          this.signupForm.reset();
         }
         this.loading = false;
         this.cdr.markForCheck();

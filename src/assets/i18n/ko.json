@@ -12,6 +12,10 @@
     "Password is required": "비밀번호를 입력하세요",
     "Password is too short": "비밀번호가 너무 짧습니다",
     "Forgot your password?": "비밀번호 찾기",
-    "Sign In": "로그인",
-    "Create an account": "회원 가입하기"
+    "Create an account": "회원 가입하기",
+    "Sign Up": "가입하기",
+    "Confirm Password": "비밀번호 확인",
+    "Passwords do not match": "비밀번호가 일치하지 않습니다",
+    "Forgot Password": "비밀번호를 잊으 셨나요",
+    "Reset password": "암호를 재설정"
 }

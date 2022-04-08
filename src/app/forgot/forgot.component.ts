@@ -2,24 +2,20 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { emailPhoneValidator } from '../_directives/email-phone-validator.directive';
-import { AuthService, SignInUpCredentials } from '../_services/auth.service';
+import { AuthService, ResetPasswordCredentials } from '../_services/auth.service';
 import { Logger } from '../_services/logger/logger';
 
 @Component({
-  selector: 'app-sign-in',
-  templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.scss'],
+  selector: 'app-forgot',
+  templateUrl: './forgot.component.html',
+  styleUrls: ['./forgot.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SignInComponent {
-  loginForm = this.fb.group({
+export class ForgotComponent {
+  forgotForm = this.fb.group({
     email: ['', [
       Validators.required,
       emailPhoneValidator,
-    ]],
-    password: ['', [
-      Validators.required,
-      Validators.minLength(6),
     ]],
   });
 
@@ -35,33 +31,32 @@ export class SignInComponent {
   ) { }
 
   get f(): { [key: string]: AbstractControl; } {
-    return this.loginForm.controls;
+    return this.forgotForm.controls;
   }
 
   isDisabled(): boolean {
-    return (this.submitted && this.loginForm.invalid) || this.loading;
+    return (this.submitted && this.forgotForm.invalid) || this.loading;
   }
 
   onSubmit() {
     this.submitted = true;
 
-    if (this.loginForm.invalid) {
+    if (this.forgotForm.invalid) {
         return;
     }
 
-    const data: SignInUpCredentials = {
+    const data: ResetPasswordCredentials = {
       email: this.f['email'].value,
-      password: this.f['password'].value,
     }
 
     this.loading = true;
     this.authService
-      .signin(data)
+      .resetPassword(data)
       .subscribe((result) => {
         if (!!result) {
-          this.logger.notice(`Welcome, ${result.name}`);
+          this.logger.notice('actionCompleted', result.actionCompleted);
           this.submitted = false;
-          this.loginForm.reset();
+          this.forgotForm.reset();
         }
         this.loading = false;
         this.cdr.markForCheck();

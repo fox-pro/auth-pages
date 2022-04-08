@@ -22,6 +22,7 @@ export class SchemeSwitcherComponent {
   ) { }
 
   @HostListener('click')
+  @HostListener('keyup.enter')
   switch(): void {
     this.schemeService.switch();
     this.class = this.getSwitcherClass();

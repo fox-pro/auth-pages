@@ -1,0 +1,28 @@
+<app-card>
+    <app-logo></app-logo>
+    <h1 class="card-title">{{ 'Forgot Password' | translate }}</h1>
+
+    <form [formGroup]="forgotForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="form-control" appAnimatedInput [ngClass]="{ invalid: submitted && f['email'].errors, filled: !!f['email'].value }">
+                <label for="email">{{ 'Email or Phone' | translate }}</label>
+                <input type="text" name="email" formControlName="email" id="email" autocomplete="email" aria-required="true" required>
+                <div *ngIf="submitted && f['email'].errors" class="input-invalid" role="alert" aria-relevant="all">
+                    <div *ngIf="f['email'].errors['required']">{{ 'Email or Phone is required' | translate }}</div>
+                    <div *ngIf="f['email'].errors['email']">{{ 'Email is invalid' | translate }}</div>
+                    <div *ngIf="f['email'].errors['phone']">{{ 'Phone is invalid' | translate }}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row submit">
+            <a routerLink="">{{ 'Sign in' | translate }}</a>
+            <button type="submit"
+                [disabled]="isDisabled()"
+                [attr.aria-disabled]="true"
+                [attr.aria-label]="'Reset password' | translate"
+            >{{ 'Reset password' | translate }}</button>
+        </div>
+    </form>
+</app-card>
+<app-footer></app-footer>

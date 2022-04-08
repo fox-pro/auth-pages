@@ -1,8 +1,8 @@
 <app-card>
     <app-logo></app-logo>
-    <h1 class="card-title">{{ 'Sign in' | translate }}</h1>
+    <h1 class="card-title">{{ 'Sign up' | translate }}</h1>
 
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
         <div class="row">
             <div class="form-control" appAnimatedInput [ngClass]="{ invalid: submitted && f['email'].errors, filled: !!f['email'].value }">
                 <label for="email">{{ 'Email or Phone' | translate }}</label>
@@ -26,18 +26,24 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="form-control" appAnimatedInput [ngClass]="{ invalid: submitted && signupForm.errors, filled: !!f['confirm'].value }">
+                <label for="confirm">{{ 'Confirm Password' | translate }}</label>
+                <input type="password" name="confirm" formControlName="confirm" id="confirm" aria-required="true" required>
+                <div *ngIf="submitted && signupForm.errors && signupForm.errors['notSame']" class="input-invalid" role="alert" aria-relevant="all">
+                    <div *ngIf="signupForm.errors && signupForm.errors['notSame']">{{ 'Passwords do not match' | translate }}</div>
+                </div>
+            </div>
+        </div>
+
         <div class="row submit">
-            <a routerLink="/forgot">{{ 'Forgot your password?' | translate }}</a>
+            <a routerLink="">{{ 'Sign in' | translate }}</a>
             <button type="submit"
                 [disabled]="isDisabled()"
                 [attr.aria-disabled]="true"
-                [attr.aria-label]="'Sign In' | translate"
-            >{{ 'Sign In' | translate }}</button>
+                [attr.aria-label]="'Sign Up' | translate"
+            >{{ 'Sign Up' | translate }}</button>
         </div>
     </form>
-
-    <div class="row">
-        <a routerLink="/signup">{{ 'Create an account' | translate }}</a>
-    </div>
 </app-card>
 <app-footer></app-footer>
