@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { emailPhoneValidator } from '../_directives/email-phone-validator.directive';
 import { AuthService, SignInUpCredentials } from '../_services/auth.service';
@@ -32,6 +33,7 @@ export class SignInComponent {
     private authService: AuthService,
     private logger: Logger,
     private cdr: ChangeDetectorRef,
+    private router: Router,
   ) { }
 
   get f(): { [key: string]: AbstractControl; } {
@@ -61,6 +63,7 @@ export class SignInComponent {
         if (!!result) {
           this.logger.notice(`Welcome, ${result.name}`);
           this.submitted = false;
+          this.router.navigate([]);
           this.loginForm.reset();
         }
         this.loading = false;

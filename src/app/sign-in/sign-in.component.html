@@ -17,8 +17,8 @@
 
         <div class="row">
             <div class="form-control" appAnimatedInput [ngClass]="{ invalid: submitted && f['password'].errors, filled: !!f['password'].value }">
-                <label for="password">{{ 'Password' | translate }}</label>
-                <input type="password" name="password" formControlName="password" id="password" aria-required="true" required>
+                <label for="current-password">{{ 'Password' | translate }}</label>
+                <input type="password" name="password" formControlName="password" id="current-password" aria-required="true" required>
                 <div *ngIf="submitted && f['password'].errors" class="input-invalid" role="alert" aria-relevant="all">
                     <div *ngIf="f['password'].errors['required']">{{ 'Password is required' | translate }}</div>
                     <div *ngIf="f['password'].errors['minlength']">{{ 'Password is too short' | translate }}</div>
