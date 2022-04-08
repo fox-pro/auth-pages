@@ -1,0 +1,17 @@
+{
+    "Language": "언어 선택",
+    "Help": "돕다",
+    "Privacy": "은둔",
+    "Terms": "자귀",
+    "Sign in": "로그인",
+    "Email or Phone": "이메일 또는 핸드폰 번호",
+    "Email or Phone is required": "이메일 또는 핸드폰 번호를 입력하세요",
+    "Email is invalid": "이메일이 잘못되었습니다",
+    "Phone is invalid": "휴대폰 번호가 잘못되었습니다",
+    "Password": "비밀번호",
+    "Password is required": "비밀번호를 입력하세요",
+    "Password is too short": "비밀번호가 너무 짧습니다",
+    "Forgot your password?": "비밀번호 찾기",
+    "Sign In": "로그인",
+    "Create an account": "회원 가입하기"
+}

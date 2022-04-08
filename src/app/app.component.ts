@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { I18nService } from './_services/i18n.service';
 
 @Component({
   selector: 'app-root',
@@ -6,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'KidsLoop';
+
+  constructor(
+    i18nService: I18nService,
+  ) {
+    i18nService.init();
+  }
 }

@@ -7,4 +7,5 @@ export interface EnvironmentInterface {
   production: boolean;
   loggerProvider: Type<Logger>;
   authApiBaseUrl: string;
+  defaultLanguage: string;
 }

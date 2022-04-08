@@ -5,4 +5,5 @@ export const environment: EnvironmentInterface = {
   production: true,
   loggerProvider: ConsoleLogger,
   authApiBaseUrl: 'https://my-json-server.typicode.com/kidsloop-test/accounts',
+  defaultLanguage: 'en',
 };

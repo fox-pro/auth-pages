@@ -1,3 +1,7 @@
+$lightCardBgColor: #fafafa;
+$lightCardBgFocusColor: darken($lightCardBgColor, 3%);
+$darkCardBgColor: #212121;
+$darkCardBgFocusColor: lighten($darkCardBgColor, 3%);
 $primaryColor: #3379ce;
 $lightenPrimaryColor: lighten(#3379ce, 10%);
 $darkenPrimaryColor: darken(#3379ce, 10%);
@@ -11,7 +15,8 @@ $disabledPrimaryColor: desaturate(#3379ce, 30%);
     --secondary-color: #17377b;
     --disabled-color: #{$disabledPrimaryColor};
     --danger-color: #f44336;
-    --card-bg-color: #fafafa;
+    --card-bg-color: #{$lightCardBgColor};
+    --card-bg-focus-color: #{$lightCardBgFocusColor};
     --card-shadow: rgba(0, 0, 0, 0.1);
     --label-text-color: rgba(0, 0, 0, 0.5);
     --input-border-color: rgba(0, 0, 0, 0.25);
@@ -23,7 +28,8 @@ body.dark {
     --bg-color: #272727;
     --primary-focus-color: #{$darkenPrimaryColor};
     --secondary-color: #77b0f4;
-    --card-bg-color: #212121;
+    --card-bg-color: #{$darkCardBgColor};
+    --card-bg-focus-color: #{$darkCardBgFocusColor};
     --card-shadow: rgba(255, 255, 255, 0.1);
     --label-text-color: rgba(255, 255, 255, 0.5);
     --input-border-color: rgba(255, 255, 255, 0.25);

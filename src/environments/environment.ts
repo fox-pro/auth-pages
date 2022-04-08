@@ -9,6 +9,7 @@ export const environment: EnvironmentInterface = {
   production: false,
   loggerProvider: ConsoleLogger,
   authApiBaseUrl: 'https://my-json-server.typicode.com/kidsloop-test/accounts',
+  defaultLanguage: 'en',
 };
 
 /*

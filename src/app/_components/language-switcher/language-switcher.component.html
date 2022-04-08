@@ -1,0 +1,12 @@
+<div class="control" (click)="openSwitcher()">
+    <div>{{ 'Language' | translate }}</div>
+    <span class="arrow-wrapper"><span class="arrow"></span></span>
+</div>
+
+<div class="switcher" [class.open]="switcherOpen">
+    <div *ngFor="let item of languages | keyvalue"
+        class="item"
+        [class.active]="item.key === current"
+        (click)="switch(item.key)"
+    >{{ item.value }}</div>
+</div>

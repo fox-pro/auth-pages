@@ -1,39 +1,39 @@
 <app-card>
     <app-logo></app-logo>
-    <h4 class="card-title">Sign in</h4>
+    <h4 class="card-title">{{ 'Sign in' | translate }}</h4>
 
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="row">
             <div class="field" appAnimatedInput [ngClass]="{ invalid: submitted && f['email'].errors, filled: !!f['email'].value }">
-                <label for="email">Email or Phone</label>
+                <label for="email">{{ 'Email or Phone' | translate }}</label>
                 <input type="text" name="email" formControlName="email" id="email" autocomplete="email" required>
                 <div *ngIf="submitted && f['email'].errors" class="input-invalid">
-                    <div *ngIf="f['email'].errors['required']">Email or Phone is required</div>
-                    <div *ngIf="f['email'].errors['email']">Email is invalid</div>
-                    <div *ngIf="f['email'].errors['phone']">Phone is invalid</div>
+                    <div *ngIf="f['email'].errors['required']">{{ 'Email or Phone is required' | translate }}</div>
+                    <div *ngIf="f['email'].errors['email']">{{ 'Email is invalid' | translate }}</div>
+                    <div *ngIf="f['email'].errors['phone']">{{ 'Phone is invalid' | translate }}</div>
                 </div>
             </div>
         </div>
 
         <div class="row">
             <div class="field" appAnimatedInput [ngClass]="{ invalid: submitted && f['password'].errors, filled: !!f['password'].value }">
-                <label for="password">Password</label>
+                <label for="password">{{ 'Password' | translate }}</label>
                 <input type="password" name="password" formControlName="password" id="password" required>
                 <div *ngIf="submitted && f['password'].errors" class="input-invalid">
-                    <div *ngIf="f['password'].errors['required']">Password is required</div>
-                    <div *ngIf="f['password'].errors['minlength']">Minimum password length is {{ f['password'].errors['minlength'].requiredLength }}</div>
+                    <div *ngIf="f['password'].errors['required']">{{ 'Password is required' | translate }}</div>
+                    <div *ngIf="f['password'].errors['minlength']">{{ 'Password is too short' | translate }}</div>
                 </div>
             </div>
         </div>
 
         <div class="row submit">
-            <a href="#">Forgot your password?</a>
-            <button type="submit" [disabled]="isDisabled()">Sign In</button>
+            <a href="#">{{ 'Forgot your password?' | translate }}</a>
+            <button type="submit" [disabled]="isDisabled()">{{ 'Sign In' | translate }}</button>
         </div>
     </form>
 
     <div class="row">
-        <a href="#">Create an account</a>
+        <a href="#">{{ 'Create an account' | translate }}</a>
     </div>
 </app-card>
 <app-footer></app-footer>
