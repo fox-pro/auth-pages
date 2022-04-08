@@ -30,6 +30,15 @@ a {
     }
 }
 
+// Remove chrome autofill color from inputs
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000000s ease-in-out 0s;
+    -webkit-text-fill-color: var(--text-color);
+}
+
 .form-control {
     $inputHorizontalPadding: 16px;
     $inputVerticalPadding: 16px;
